@@ -1,21 +1,51 @@
-nome = input("Digite o nome do herói:")
-xp = int(input("Digite a quantidade de experiência do herói:"))
+class heroi:
+    def __init__(self, nome, xp, nivel):
+        self.nome = nome
+        self.xp = xp
+        self.nivel = nivel
 
-if xp < 1000:
-    nivel = "Ferro"
-elif xp <= 2000:
-    nivel = "Bronze"
-elif xp <= 5000:
-    nivel = "Prata"
-elif xp <= 7000:
-    nivel = "Ouro"
-elif xp <= 8000:
-    nivel = "Platina"
-elif xp <= 9000:
-    nivel = "Ascendente"
-elif xp <= 10000:
-    nivel = "Imortal"
-else:
-    nivel = "Radiante"
+def nome_heroi():
+    while True:
+        nome = input("Digite o nome do herói: ").strip().title()
+        if nome.isalpha():
+            return nome
+        else:
+            print("Nome válido apenas com letras.")
 
-print(f"O Herói de nome {nome} está no nível de {nivel}")
+def xp_heroi():
+    while True:
+        try:
+            xp = int(input("Digite a experiência do herói: "))
+            if xp > 0:
+                return xp
+            else:
+                print("A quantidade de experiência deve ser maior que 0.")
+        except ValueError:
+            print("Digite apenas números.")
+
+def nivel_heroi(xp):
+    if xp < 1000:
+        return "Ferro"
+    elif 1000 <= xp <= 2000:
+        return "Bronze"
+    elif 2001 <= xp <= 5000:
+        return "Prata"
+    elif 5001 <= xp <= 7000:
+        return "Ouro"
+    elif 7001 <= xp <= 8000:
+        return "Platina"
+    elif 8001 <= xp <= 9000:
+        return "Ascendente"
+    elif 9001 <= xp <= 10000:
+        return "Imortal"
+    else:
+        return "Radiante"
+
+def main():
+    nome = nome_heroi()
+    xp = xp_heroi()
+    nivel = nivel_heroi(xp)
+
+    print(f"O Herói de nome {nome} está no nível de {nivel}")            
+
+main()
